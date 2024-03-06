@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	version="4.0">
+	<display-name>gspi_web</display-name>
+	
+	<!-- SECURITY ROLES -->
+	<security-role>
+		<role-name>TesterRole</role-name>
+	</security-role>
+	<security-role>
+		<role-name>DeveloperRole</role-name>
+	</security-role>
+	<security-role>
+		<role-name>SystemRole</role-name>
+	</security-role>
+	<security-role>
+		<role-name>BusinessUserRole</role-name>
+	</security-role>
+	<security-role>
+		<role-name>OperationsRole</role-name>
+	</security-role>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>BasicAuth</web-resource-name>
+			<url-pattern>/v1/gbdsps/processsps</url-pattern>
+			<url-pattern>/v1/gbdsps/performHealthCheck</url-pattern>
+			<url-pattern>/v1/processbizrulesengine</url-pattern>
+			<url-pattern>/v1/collapse</url-pattern>
+			<url-pattern>/v1/load/provider</url-pattern>
+			<url-pattern>/v1/load/provider/check</url-pattern>
+			<url-pattern>/v1/foa/load</url-pattern>
+			<url-pattern>/v1/codetranslation</url-pattern>
+			<url-pattern>/v1/facetsmatchmerge</url-pattern>
+			 <!--<url-pattern>/v1/gbdsps/provider/retry</url-pattern>
+			 <url-pattern>/v1/gbdsps/provider/lock</url-pattern>
+			<url-pattern>/v1/gbdsps/provider/unlock</url-pattern>  -->
+			<url-pattern>/v1/gbdsps/status/LstnrCntrlSts</url-pattern>
+			<url-pattern>/v1/gbdsps/status/OrgKafkaStatus</url-pattern>
+			<url-pattern>/v1/gbdsps/status/IPKafkaStatus</url-pattern>
+			<url-pattern>/v1/gbdsps/status/orchMngerStatus</url-pattern>
+		<!-- 	<url-pattern>/v1/gbdsps/reprocesssps</url-pattern> -->
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>SystemRole</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>BasicAuth</web-resource-name>
+			<url-pattern>/v1/gbdsps/processsps</url-pattern>
+			<url-pattern>/v1/gbdsps/performHealthCheck</url-pattern>
+			<url-pattern>/v1/load/provider/check</url-pattern>
+				<!--  <url-pattern>/v1/gbdsps/provider/retry</url-pattern>
+			 <url-pattern>/v1/gbdsps/provider/lock</url-pattern>
+			<url-pattern>/v1/gbdsps/provider/unlock</url-pattern>  -->
+			<url-pattern>/v1/gbdsps/status/LstnrCntrlSts</url-pattern>
+			<url-pattern>/v1/gbdsps/status/OrgKafkaStatus</url-pattern>
+			<url-pattern>/v1/gbdsps/status/IPKafkaStatus</url-pattern>
+			<url-pattern>/v1/gbdsps/status/orchMngerStatus</url-pattern>
+			<!-- <url-pattern>/v1/gbdsps/deleteXREF</url-pattern> -->
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>TesterRole</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>BasicAuth</web-resource-name>
+			<url-pattern>/v1/gbdsps/processsps</url-pattern>
+			<url-pattern>/v1/gbdsps/performHealthCheck</url-pattern>
+			<url-pattern>/v1/load/provider/check</url-pattern>
+			<!--<url-pattern>/v1/gbdsps/provider/retry</url-pattern>
+			  <url-pattern>/v1/gbdsps/provider/lock</url-pattern>
+			<url-pattern>/v1/gbdsps/provider/unlock</url-pattern>  -->
+			<url-pattern>/v1/gbdsps/status/LstnrCntrlSts</url-pattern>
+			<url-pattern>/v1/gbdsps/status/OrgKafkaStatus</url-pattern>
+			<url-pattern>/v1/gbdsps/status/IPKafkaStatus</url-pattern>
+			<url-pattern>/v1/gbdsps/status/orchMngerStatus</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>DeveloperRole</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<!-- <security-constraint>
+		<web-resource-collection>
+			<web-resource-name>BasicAuth</web-resource-name>
+			 <url-pattern>/v1/gbdsps/provider/retry</url-pattern>
+			<url-pattern>/v1/gbdsps/provider/lock</url-pattern>
+			<url-pattern>/v1/gbdsps/provider/unlock</url-pattern> 
+			<url-pattern>/v1/gbdsps/reprocesssps</url-pattern>
+			<url-pattern>/v1/gbdsps/deleteXREF</url-pattern>  
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>BusinessUserRole</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	 </security-constraint> -->
+	 <security-constraint>
+		<web-resource-collection>
+			<web-resource-name>BasicAuth</web-resource-name>
+			<url-pattern>/v1/gbdsps/performHealthCheck</url-pattern>
+			<url-pattern>/v1/load/provider/check</url-pattern>
+			<url-pattern>/v1/gbdsps/status/LstnrCntrlSts</url-pattern>
+			<url-pattern>/v1/gbdsps/status/OrgKafkaStatus</url-pattern>
+			<url-pattern>/v1/gbdsps/status/IPKafkaStatus</url-pattern>
+			<url-pattern>/v1/gbdsps/status/orchMngerStatus</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>OperationsRole</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+	<session-config>
+  <cookie-config>
+     <http-only>true</http-only>        
+     <secure>true</secure>        
+  </cookie-config>
+</session-config>
+</web-app>

@@ -1,0 +1,22 @@
+<server description="defaultServer">
+    <!-- Enable features -->
+    <featureManager>
+        <feature>servlet-4.0</feature>
+        <feature>springBoot-2.0</feature>
+        <feature>jaxb-2.2</feature>
+        <feature>jaxrs-2.1</feature>
+        <feature>jsp-2.3</feature>
+    </featureManager>
+
+    <!-- Define HTTP endpoint -->
+    <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="9080" />
+
+
+	<applicationManager autoExpand="true" />
+	
+    <!-- Deploy your application -->
+	<springBootApplication type="war" id="gspi" 
+		location="gspi_web-1.0.540.war">
+		<applicationArgument>--server.context-path=/gspi</applicationArgument>
+	</springBootApplication>
+</server>

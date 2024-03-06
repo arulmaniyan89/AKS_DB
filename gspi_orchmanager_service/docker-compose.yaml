@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  gspi_web_services:
+    image: arulmaniyan1989/gspi_web:1.0.540
+    ports:
+      - 9080:9080
+    restart: always
+      
+  gspi_orchmanager_services:
+    image: arulmaniyan1989/gspi_orchmanager_service:1.0.539
+    ports:
+      - 8080:8080
+    restart: always
+    depends_on:
+      - gspi_web_services
