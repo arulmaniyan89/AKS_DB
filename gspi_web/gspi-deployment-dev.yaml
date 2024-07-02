@@ -16,6 +16,11 @@ spec:
       containers:
         - name: gspi
           image: arulmaniyan1989/gspi_web:latest
+          resources:
+            limits: 
+              memory: "2Gi"
+            requests:
+              memory: "1Gi"
           ports:
             - containerPort: 9080
           envFrom:
