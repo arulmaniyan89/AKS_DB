@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gspi-deployment
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gspi
+  template:
+    metadata:
+      labels:
+        app: gspi
+    spec:
+      containers:
+        - name: gspi
+          image: arulmaniyan1989/gspi_web:latest
+          ports:
+            - containerPort: 9080
+          envFrom:
+          - secretRef:
+              name: secretkv
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gspi-service
+  namespace: app
+spec:
+  selector:
+    app: gspi
+  ports:
+    - port: 9080
+      targetPort: 9080
+  type: LoadBalancer
